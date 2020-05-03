@@ -273,9 +273,11 @@ class MsgPacker<char>
       //std::cout << "pack<char>("<< int(val) << ")" << std::endl;
       return os.write(&val, 1).good();
     }
-    static size_t packedSize(const char& val) { return sizeof(char); }
-    static bool unpack(std::istream& is, char& val)
-    {
+    static size_t packedSize(const char& val) {
+        (void)val;
+        return sizeof(char);
+    }
+    static bool unpack(std::istream& is, char& val) {
       is.read(&val, 1);
       //std::cout << "unpack<char>(" << int(val) << ")" << std::endl;
       return is.good();
@@ -294,7 +296,10 @@ class Packer64
       o.uval = htobe64(o.uval);
       return os.write(o.buf, sizeof(T)).good();
     }
-    static size_t packedSize(const T& val) { return sizeof(T); }
+    static size_t packedSize(const T& val) {
+        (void)val;
+        return sizeof(T);
+    }
     static bool unpack(std::istream& is, T& val)
     {
       Overlay o;
@@ -320,15 +325,18 @@ template <typename T>
 class Packer32
 {
   public:
-    static bool pack(std::ostream& os, const T& val)
-    {
-      //std::cout << "pack<32>(" << val << ")" << std::endl;
-      Overlay o;
-      o.val = val;
-      o.uval = htobe32(o.uval);
-      return os.write(o.buf, sizeof(T)).good();
+    static bool pack(std::ostream& os, const T& val) {
+        (void)val;
+        //std::cout << "pack<32>(" << val << ")" << std::endl;
+        Overlay o;
+        o.val = val;
+        o.uval = htobe32(o.uval);
+        return os.write(o.buf, sizeof(T)).good();
     }
-    static size_t packedSize(const T& val) { return sizeof(T); }
+    static size_t packedSize(const T& val) {
+        (void)val;
+        return sizeof(T);
+    }
     static bool unpack(std::istream& is, T& val)
     {
       Overlay o;
@@ -362,7 +370,10 @@ class Packer16
       o.uval = htobe16(o.uval);
       return os.write(o.buf, sizeof(T)).good();
     }
-    static size_t packedSize(const T& val) { return sizeof(T); }
+    static size_t packedSize(const T& val) {
+        (void)val;
+        return sizeof(T);
+    }
     static bool unpack(std::istream& is, T& val)
     {
       Overlay o;
@@ -392,7 +403,10 @@ class Packer8
       //std::cout << "pack<8>(" << int(val) << ")" << std::endl;
       return os.write(reinterpret_cast<const char*>(&val), sizeof(T)).good();
     }
-    static size_t packedSize(const T& val) { return sizeof(T); }
+    static size_t packedSize(const T& val) {
+        (void)val;
+        return sizeof(T);
+    }
     static bool unpack(std::istream& is, T& val)
     {
       is.read(reinterpret_cast<char*>(&val), sizeof(T));

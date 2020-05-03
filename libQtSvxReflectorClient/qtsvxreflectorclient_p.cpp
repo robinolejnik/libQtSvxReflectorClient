@@ -215,6 +215,7 @@ void QtSvxReflectorClientPrivate::onDisconnected() {
 }
 
 void QtSvxReflectorClientPrivate::onm_con_stateChanged(QAbstractSocket::SocketState state) {
+    Q_UNUSED(state)
     //qDebug() << "onTcpStateChanged" << state;
 }
 
@@ -619,6 +620,7 @@ void QtSvxReflectorClientPrivate::checkTmpMonitorTimeout(void) {
 }
 
 void QtSvxReflectorClientPrivate::selectTg(uint32_t tg, bool unmute) {
+    Q_UNUSED(unmute)
     qDebug() << ": Selecting TG #" << tg;
 
     //TODOm_report_tg_timer.reset();
