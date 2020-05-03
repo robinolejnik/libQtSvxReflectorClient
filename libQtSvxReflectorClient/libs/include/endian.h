@@ -60,8 +60,6 @@
 
 #elif defined(__WINDOWS__)
 
-#	include <windows.h>
-
 #	if BYTE_ORDER == LITTLE_ENDIAN
 
 #               if defined(_MSC_VER)
