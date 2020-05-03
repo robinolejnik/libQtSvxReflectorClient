@@ -3,6 +3,6 @@ SUBDIRS = lib app
 DESTDIR = build
 DLLDESTDIR = dllbuild
 lib.subdir = libQtSvxReflectorClient
-app.subdir = QtSvxReflectorClientTest
+app.subdir = libQtSvxReflectorClientTest
 app.depends = lib
 CONFIG += c++17

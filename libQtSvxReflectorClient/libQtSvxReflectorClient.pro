@@ -23,3 +23,9 @@ unix {
 }
 
 DISTFILES += libQtSvxReflectorClient.pri
+
+copydata.commands = $(COPY_DIR) \"$$shell_path($$PWD/libs/bin/*.dll)\" \"$$shell_path($$DESTDIR)\"
+first.depends = $(first) copydata
+export(first.depends)
+export(copydata.commands)
+QMAKE_EXTRA_TARGETS += first copydata
